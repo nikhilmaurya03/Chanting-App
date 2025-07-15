@@ -44,6 +44,7 @@ dependencies:
   share_plus: ^10.0.2
   flutter_android_volume_keydown: ^1.0.0
   buttonhandler: ^0.0.4
+  fluttertoast: ^8.2.8
 
   
 

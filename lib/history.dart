@@ -30,8 +30,8 @@ class History extends StatelessWidget {
             return ListView.builder(
               padding: const EdgeInsets.all(8.0),
               itemCount: snapshot.data!.length,
-              reverse: true,
-              shrinkWrap: false,
+             // reverse: true,
+             // shrinkWrap: false,
               controller: _scrollController,
               
              scrollDirection: Axis.vertical,
@@ -44,7 +44,7 @@ class History extends StatelessWidget {
                   //color: Colors.blue[200],
                   color: Theme.of(context).brightness == Brightness.light
                       ? Colors.blue[200]
-                      : const Color.fromARGB(255, 3, 31, 63),
+                      : const Color.fromARGB(255, 3, 31, 63), 
                   margin: const EdgeInsets.symmetric(vertical: 8.0),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0),

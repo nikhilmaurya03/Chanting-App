@@ -1,4 +1,6 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'dbfile.dart';
 
 class CountProvider with ChangeNotifier {
@@ -6,7 +8,7 @@ class CountProvider with ChangeNotifier {
   int _times = 0;
   int get times => _times; // getter is created for accessing in another class
 
-  int _counter = -1;
+  int _counter = 0;
   int get counter => _counter;
 
   int _yellowcounter = -4;
@@ -31,7 +33,6 @@ class CountProvider with ChangeNotifier {
   }
 
   Future<void> _loadInitialCount(String date) async {
-    
     var records = await CountDatabase.instance.readDatabase();
 
     for (var record in records) {
@@ -47,6 +48,8 @@ class CountProvider with ChangeNotifier {
 
   void setCount() {
     _counter++;
+
+
     if (_counter - _yellowcounter == 4) {
       _yellowcounter += 4;
     }
@@ -59,11 +62,22 @@ class CountProvider with ChangeNotifier {
     if (_counter - _redcounter == 4) {
       _redcounter += 4;
     }
+
+    
     // _loadInitialCount();
     if (counter == 108) {
       print('initial _times = $_times');
 
       _times++;
+      Fluttertoast.showToast(
+        msg: "Completed $times rounds",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.green[800],
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
 
       print('after increment _times = $_times');
 
@@ -78,9 +92,44 @@ class CountProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void decrementCount() {
+    _counter--;
+    if (_counter == -1) {
+      _counter = 0;
+      //toast default value is zero
+
+      Fluttertoast.showToast(
+        msg: "Default value is zero",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red[800],
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    }
+    notifyListeners();
+  }
+
+  void resetCount() {
+    _counter = 0;
+
+    //toast counter reset
+    Fluttertoast.showToast(
+        msg: "Counter reset",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.green[800],
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    notifyListeners();
+  }
+
   Future<void> _dbinsertRecord(int times, String date) async {
     List<Map<String, dynamic>> show_count = [];
-     //date = DateTime.now().toIso8601String().split('T').first;
+    //date = DateTime.now().toIso8601String().split('T').first;
     //print(date);
 
     var read = await CountDatabase.instance.readDatabase();

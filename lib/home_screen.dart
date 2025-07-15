@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hello_world/count_provider.dart';
+import 'package:hello_world/home_screen_new.dart';
 import 'dart:async';
 import 'package:hello_world/today.dart';
 import 'package:provider/provider.dart';
@@ -53,8 +54,7 @@ class _SuperHomeScreenState extends State<SuperHomeScreen>
       () => Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => MyHomePage(
-            title: 'ISKON',
+          builder: (context) => MyWidget(
             toggleTheme: widget.toggleTheme, //showing error
           ),
         ),

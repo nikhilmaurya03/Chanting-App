@@ -51,7 +51,7 @@ class CountDatabase {
   //read database
   Future<List<Map<String, dynamic>>> readDatabase() async {
     Database? db = await instance.database;
-    return await db!.query(dbTable);
+    return await db!.query(dbTable, orderBy:'$columnDate DESC');   // sort by date in descending order
   }
 
   //update record

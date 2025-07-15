@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/count_provider.dart';
 import 'package:hello_world/home_screen.dart';
+import 'package:hello_world/home_screen_new.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -36,26 +37,26 @@ class _MyAppState extends State<MyApp> {
             brightness: Brightness.light,
             appBarTheme: AppBarTheme(
               //foregroundColor: Colors.black,
-              color: Colors.orange,
+              color: Colors.grey[200],
             ),
             bottomAppBarTheme: BottomAppBarTheme(
-              color: Colors.orange,
+              color: Colors.grey[200],
             ),
             floatingActionButtonTheme: FloatingActionButtonThemeData(
-              backgroundColor: Colors.orange,
+              backgroundColor: Colors.white,
               hoverColor: Color.fromARGB(100, 76, 76, 76),
             )),
         darkTheme: ThemeData(
             brightness: Brightness.dark,
             appBarTheme: AppBarTheme(
-                color: const Color.fromARGB(255, 91, 85, 85),
+                color:  Colors.grey[900],
                // color: const Color.fromARGB(255, 16, 16, 15)
                 ),
             bottomAppBarTheme: BottomAppBarTheme(
-              color: Color.fromARGB(255, 91, 85, 85),
+              color: Colors.grey[900],
             ),
             floatingActionButtonTheme: FloatingActionButtonThemeData(
-              backgroundColor: Color.fromARGB(255, 91, 85, 85),
+              backgroundColor: Colors.grey[900],
               focusColor: Color.fromARGB(136, 76, 76, 76),
               // hoverColor: colo
             )),
@@ -64,6 +65,7 @@ class _MyAppState extends State<MyApp> {
         home: SuperHomeScreen(
           toggleTheme: _toggleTheme,
         ),
+      //  home: MyWidget(toggleTheme: _toggleTheme,),
       ),
     );
   }
